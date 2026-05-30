@@ -117,7 +117,7 @@ As imagens abaixo apresentam as evidências dos testes realizados no Postman:
 
 ## Registro dos testes
 
-Após a execução dos testes no Postman, os resultados foram registrados em uma planilha de controle de testes. Essa planilha foi utilizada para documentar cada cenário executado, as entradas utilizadas, o resultado esperado, o resultado obtido, o status final e observações sobre o comportamento da API.
+Após a execução dos testes no Postman, os resultados foram registrados em uma planilha de controle de testes.
 
 O registro dos testes foi organizado com os seguintes campos:
 
@@ -131,16 +131,26 @@ O registro dos testes foi organizado com os seguintes campos:
 | Status             | Indicação se o teste foi concluído com sucesso ou falha |
 | Observações        | Comentários adicionais sobre o teste                    |
 
-A documentação dos testes é importante porque permite manter um histórico claro dos cenários avaliados e facilita a análise dos resultados obtidos. Além disso, o registro ajuda a identificar se a API está se comportando conforme o esperado em situações válidas e inválidas.
-
-Durante os testes realizados, não foram identificadas falhas críticas no funcionamento da autenticação. O cenário de login válido retornou o token de acesso corretamente, enquanto os cenários inválidos retornaram mensagens de erro e impediram o acesso, conforme esperado.
-
 As imagens abaixo apresentam as evidências do registro dos testes na planilha:
 
 ![Planilha de testes preenchida](/prints/Planilha_Testes.png)
 
-A planilha utilizada para o registro dos testes também foi adicionada ao repositório na pasta `/planilha/`.
+A planilha utilizada para o registro dos testes também foi adicionada ao repositório em `/planilha/Testes.xlsx`.
 
 ## Resultados obtidos
 
+Com a realização dos testes caixa cinza, foi possível verificar o comportamento da API de autenticação do Supabase em diferentes situações. No cenário de login válido, o resultado foi o esperado: a API retornou o status HTTP 200 OK e um access_token, confirmando que o usuário cadastrado conseguiu se autenticar corretamente.
+
+Nos cenários inválidos, como senha incorreta, usuário inexistente, campos vazios e credenciais inválidas, a API bloqueou o acesso e retornou mensagens de erro. Esse comportamento mostra que o processo de autenticação realiza validações antes de permitir o login do usuário.
+
+De forma geral, os resultados obtidos foram compatíveis com os resultados esperados definidos na atividade. A API respondeu corretamente tanto no cenário de sucesso quanto nos cenários de falha, possibilitando a análise dos status HTTP, respostas em JSON, mensagens de erro e retorno do token.
+
 ## Conclusão
+
+A atividade foi concluída com a configuração do ambiente no Supabase, criação do usuário de teste, configuração do Postman e execução dos cenários obrigatórios de autenticação. Os testes foram realizados corretamente e documentados por meio de prints, tabela de cenários e planilha de registro.
+
+A autenticação funcionou conforme o esperado. No cenário de login válido, a API retornou o token de acesso, indicando que as credenciais informadas estavam corretas. Já nos cenários inválidos, a API impediu o acesso e apresentou mensagens de erro, demonstrando que o processo de autenticação possui validações para entradas incorretas.
+
+Não foram identificadas falhas críticas na autenticação durante os testes realizados. O sistema se comportou de acordo com o esperado, aceitando apenas credenciais válidas e recusando tentativas inválidas de login. Como melhoria, poderiam ser incluídas mensagens de erro mais detalhadas, além de testes adicionais envolvendo expiração de token, refresh token, limite de tentativas de login e comportamento com e-mails não confirmados.
+
+Os testes caixa cinza são importantes em APIs porque permitem validar o funcionamento esperado com base em informações técnicas parcialmente conhecidas, como endpoint, método HTTP, headers, body e respostas. Esse tipo de teste ajuda a identificar problemas de autenticação, falhas de validação, comportamentos inesperados e possíveis riscos antes que a API seja utilizada em um ambiente real.
